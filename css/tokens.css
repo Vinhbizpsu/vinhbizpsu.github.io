@@ -1,0 +1,105 @@
+/* ==========================================================================
+   tokens.css — Design tokens: colour, type, space, radius, shadow, motion.
+   Sửa giá trị tại đây; mọi stylesheet khác chỉ đọc qua var(--…).
+   Palette theo DESIGN.md (đề xuất triển khai, tinh chỉnh sau khi duyệt giao diện).
+   ========================================================================== */
+
+:root {
+  /* ---- Colour · light (mặc định, cũng là phương án khi tắt JS) ---------- */
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --tint: #E8ECF8;            /* lavender — chỉ dùng cho bề mặt */
+  --primary: #344D75;         /* navy, màu chủ đạo */
+  --primary-hover: #283E60;
+  --on-primary: #FFFFFF;
+  --accent: #2F7367;          /* teal làm chữ: ≥4.5:1 cả trên nền lavender (DESIGN.md đề xuất #367E72, đã tối nhẹ) */
+  --accent-deco: #529D91;     /* teal gốc — chỉ trang trí, không làm chữ */
+  --text: #172B3D;
+  --muted: #475569;
+  --border: #DCE3ED;
+  --ring: #344D75;
+  --wash-1: #E8ECF8;                  /* gradient nền tĩnh: lavender */
+  --wash-2: rgba(82, 157, 145, .10);  /* gradient nền tĩnh: teal rất nhạt */
+
+  /* ---- Shadow --------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(23, 43, 61, .06);
+  --shadow-md: 0 10px 28px -12px rgba(23, 43, 61, .18), 0 2px 6px rgba(23, 43, 61, .05);
+
+  color-scheme: light;
+
+  /* ---- Typography ----------------------------------------------------- */
+  /* Font quen thuoc, ho tro tieng Viet; khong tai font ngoai. */
+  --font-sans: Arial, "Helvetica Neue", Helvetica, "Segoe UI", sans-serif;
+  --fs-xs: .8125rem;
+  --fs-sm: .9375rem;
+  --fs-base: 1rem;
+  --fs-lg: clamp(1.0625rem, 1rem + .3vw, 1.1875rem);
+  --fs-xl: clamp(1.25rem, 1.1rem + .6vw, 1.5rem);
+  --fs-2xl: clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem);
+  --fs-display: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --lh-tight: 1.2;
+  --lh-snug: 1.3;
+  --lh-body: 1.65;
+  --tracking-tight: -.01em;
+  --tracking-caps: .06em;
+
+  /* ---- Spacing (bội số của 4/8) --------------------------------------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+
+  /* ---- Shape ---------------------------------------------------------- */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+
+  /* ---- Layout --------------------------------------------------------- */
+  --container: 1120px;
+  --gutter: clamp(16px, 5vw, 32px);
+  --header-h: 64px;
+  --section-y: clamp(64px, 9vw, 112px);
+  --bp-nav: 820px;            /* tham chiếu: ngưỡng chuyển menu mobile ↔ desktop */
+
+  /* ---- Motion (chỉ transform + opacity khi có thể) --------------------- */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --dur-fast: 160ms;          /* hover */
+  --dur-base: 200ms;          /* menu, theme */
+  --dur-reveal: 450ms;        /* hiện dần khi cuộn */
+  --reveal-offset: 10px;
+  --lift: -2px;               /* hover nâng tối đa 3px */
+}
+
+/* ---- Colour · dark ------------------------------------------------------ */
+:root[data-theme="dark"] {
+  --bg: #111827;
+  --surface: #1E293B;
+  --tint: #202D46;
+  --primary: #A7BFEB;
+  --primary-hover: #C0D1F2;
+  --on-primary: #111827;
+  --accent: #7DC5B7;
+  --accent-deco: #529D91;
+  --text: #F1F5F9;
+  --muted: #CBD5E1;
+  --border: #334155;
+  --ring: #A7BFEB;
+  --wash-1: rgba(48, 66, 104, .55);
+  --wash-2: rgba(125, 197, 183, .07);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+  --shadow-md: 0 12px 32px -12px rgba(0, 0, 0, .55), 0 2px 6px rgba(0, 0, 0, .3);
+
+  color-scheme: dark;
+}

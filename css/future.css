@@ -1,0 +1,13 @@
+/* Extension panels reuse the approved palette, typography and reveal animation. */
+.future-section{margin-block:32px;min-width:0}
+.future-section .future-heading{margin-bottom:16px}
+.future-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
+.future-card{min-width:0;overflow-wrap:anywhere;border:1px solid var(--border);background:var(--surface);border-radius:var(--r-lg);padding:clamp(18px,3vw,28px);box-shadow:var(--shadow-sm)}
+.future-title{font-size:var(--fs-lg);line-height:1.4;margin:8px 0;color:var(--text)}
+.future-meta{font-size:var(--fs-xs);font-weight:var(--fw-semibold);color:var(--accent)}
+.future-description{white-space:pre-line;color:var(--muted);margin:12px 0;line-height:var(--lh-body)}
+.future-link{display:inline-block;margin-top:12px}
+.future-card .inline-tags{margin-top:12px}
+#future-career .future-section:first-child{margin-top:0}
+#future-career .future-section:last-child{margin-bottom:0}
+@media print{.future-card{break-inside:avoid;box-shadow:none}.future-link{color:#111}.future-section{margin:12px 0}}

@@ -1,0 +1,55 @@
+/* V3 interaction layer. Keep Arial, palette, and content from V2.2. */
+.no-js .js-only { display:none !important; }
+.intro { position:relative; isolation:isolate; }
+.ambient { position:absolute; inset:0; z-index:-1; overflow:hidden; pointer-events:none; --light-x:0px; --light-y:0px; }
+.ambient i { position:absolute; display:block; width:min(68vw,760px); aspect-ratio:1; border-radius:50%; opacity:.65; transform:translate3d(var(--light-x),var(--light-y),0); transition:transform .65s var(--ease); }
+.ambient i:first-child { top:-28%; right:-12%; background:radial-gradient(circle,rgba(147,155,218,.31),transparent 68%); }
+.ambient i:last-child { bottom:-38%; left:-12%; background:radial-gradient(circle,rgba(82,157,145,.24),transparent 68%); }
+[data-theme=dark] .ambient i:first-child { background:radial-gradient(circle,rgba(135,155,225,.22),transparent 68%); }
+[data-theme=dark] .ambient i:last-child { background:radial-gradient(circle,rgba(82,157,145,.16),transparent 68%); }
+@media (prefers-reduced-motion:no-preference) { html.no-js .ambient i{ animation:ambient-breathe 9s ease-in-out infinite alternate; } html.no-js .ambient i:last-child{ animation-delay:-4s; } html.no-js .ambient.paused i{ animation-play-state:paused; } } html[data-motion-effective="on"] .ambient i{ animation:ambient-breathe 9s ease-in-out infinite alternate; } html[data-motion-effective="on"] .ambient i:last-child{ animation-delay:-4s; } html[data-motion-effective="on"] .ambient.paused i{ animation-play-state:paused; } 
+@keyframes ambient-breathe { from { opacity:.42; } to { opacity:.83; } }
+.reading-progress { position:absolute; bottom:0; left:0; right:0; height:4px; overflow:hidden; pointer-events:none; background:var(--border); }
+.reading-progress span { display:block; width:100%; height:100%; background:linear-gradient(90deg,var(--accent-deco),var(--primary)); transform:scaleX(0); transform-origin:left; }
+.evidence-action { position:relative; display:block; height:100%; text-decoration:none; border-radius:12px; transition:background-color .24s,transform .24s var(--ease); }
+.evidence-action .evidence__label { padding-right:13px; }
+.stat-arrow { position:absolute; top:1px; right:0; color:var(--accent); font-size:1rem; opacity:.78; transition:transform .24s var(--ease); }
+.evidence-action:active { transform:scale(.985); }
+.interaction-hint { color:var(--muted); font-size:var(--fs-xs); margin-top:-8px; }
+.timeline.is-interactive li { padding-bottom:10px; align-items:start; }
+.timeline.is-interactive li:not(:last-child)::before { bottom:-1px; }
+.timeline.is-interactive .step-num { transition:background-color .22s,color .22s; }
+.timeline.is-interactive .stage-active .step-num { background:var(--primary); color:var(--on-primary); }
+.timeline.is-interactive li>div { min-width:0; border:1px solid var(--border); border-radius:12px; background:var(--surface); padding:0 13px; transition:border-color .2s,background-color .2s; }
+.timeline.is-interactive .stage-active>div { border-color:var(--accent-deco); background:var(--surface); }
+.timeline.is-interactive h4 { margin:0; }
+.stage-toggle { display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; min-height:46px; text-align:left; border:0; padding:10px 0; background:none; cursor:pointer; font-weight:700; }
+.stage-toggle::after { content:"+"; color:var(--accent); flex:none; font-size:1.1rem; font-weight:400; }
+.stage-toggle[aria-expanded=true]::after { content:"−"; }
+.timeline.is-interactive p { padding:0 0 13px; }
+@media (prefers-reduced-motion:no-preference) { html.no-js .stage-active p{ animation:stage-in .25s var(--ease) both; } } html[data-motion-effective="on"] .stage-active p{ animation:stage-in .25s var(--ease) both; } 
+@keyframes stage-in { from {opacity:.4;transform:translateY(4px)} to {opacity:1;transform:none} }
+.skill-filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+.skill-filters button { cursor:pointer; border:1px solid var(--border); color:var(--muted); background:var(--surface); border-radius:999px; padding:9px 14px; min-height:42px; font-size:var(--fs-xs); font-weight:600; transition:background-color .2s,color .2s,border-color .2s; }
+.skill-filters button[aria-pressed=true] { background:var(--primary); color:var(--on-primary); border-color:var(--primary); }
+.contact-row { display:flex; align-items:stretch; gap:8px; min-width:0; }
+.contact-row>a { display:flex; flex:1; min-width:0; align-items:center; gap:10px; padding:13px 12px; border:1px solid var(--border); background:var(--surface); border-radius:12px; color:var(--primary); text-decoration:none; font-size:var(--fs-sm); font-weight:600; }
+.contact-row>a span { flex:1; min-width:0; overflow-wrap:anywhere; }
+.copy-btn { width:46px; flex:0 0 46px; display:grid; place-items:center; background:var(--surface); border:1px solid var(--border); border-radius:12px; color:var(--primary); cursor:pointer; transition:background-color .2s,border-color .2s,color .2s; }
+.copy-btn.copied { background:var(--accent); color:var(--bg); border-color:var(--accent); }
+.copy-toast { position:fixed; z-index:35; left:50%; bottom:24px; max-width:calc(100% - 100px); transform:translate(-50%,10px); opacity:0; pointer-events:none; padding:10px 15px; border-radius:10px; background:var(--primary); color:var(--on-primary); font-size:var(--fs-sm); box-shadow:var(--shadow-md); transition:opacity .2s,transform .2s; }
+.copy-toast.show { opacity:1; transform:translate(-50%,0); }
+.back-top { position:fixed; z-index:25; right:clamp(12px,2.6vw,32px); bottom:clamp(12px,2.6vw,32px); width:46px; height:46px; display:grid; place-items:center; border-radius:14px; background:var(--surface); color:var(--primary); border:1px solid var(--border); box-shadow:var(--shadow-md); transition:transform .2s,background-color .2s; }
+.gallery-controls { display:flex; align-items:center; justify-content:center; gap:18px; margin-top:10px; font-size:var(--fs-sm); color:var(--muted); }
+.gallery-controls .icon-btn { min-width:44px; min-height:44px; font-size:1.3rem; }
+.photo-dialog img { max-height:60vh; }
+.photo-dialog[open] { animation:dialog-in .24s var(--ease) both; }
+@keyframes dialog-in { from {opacity:.5;transform:translateY(5px)} to {opacity:1;transform:none} }
+.skill-card,.honor-first,.honor-second,.cert-panel,.education-card,.toeic-card,.method-panel { transition:transform .26s var(--ease),border-color .26s,box-shadow .26s; }
+@media(hover:hover) and (pointer:fine) { .evidence-action:hover { transform:translateY(-3px); } .evidence-action:hover .stat-arrow { transform:translate(2px,-2px); } .skill-card:hover,.honor-first:hover,.honor-second:hover,.cert-panel:hover,.education-card:hover,.toeic-card:hover,.method-panel:hover { transform:translateY(-3px); border-color:var(--accent-deco); box-shadow:var(--shadow-md); } .contact-row>a:hover,.copy-btn:hover,.skill-filters button:hover { border-color:var(--accent-deco); } .back-top:hover { transform:translateY(-3px); } }
+.theme-anim,.theme-anim *,.theme-anim *::before,.theme-anim *::after { transition-duration:320ms !important; }
+@media (prefers-reduced-motion:reduce) { html.no-js .ambient i{ animation:none !important; transform:none !important; } html.no-js .evidence-action:hover,html.no-js .evidence-action:active,html.no-js .skill-card:hover,html.no-js .honor-first:hover,html.no-js .honor-second:hover,html.no-js .cert-panel:hover,html.no-js .education-card:hover,html.no-js .toeic-card:hover,html.no-js .method-panel:hover,html.no-js .back-top:hover{ transform:none; } html.no-js .theme-anim,html.no-js .theme-anim *,html.no-js .theme-anim *::before,html.no-js .theme-anim *::after{ transition-duration:.01ms !important; } } html[data-motion-effective="off"] .ambient i{ animation:none !important; transform:none !important; } html[data-motion-effective="off"] .evidence-action:hover,html[data-motion-effective="off"] .evidence-action:active,html[data-motion-effective="off"] .skill-card:hover,html[data-motion-effective="off"] .honor-first:hover,html[data-motion-effective="off"] .honor-second:hover,html[data-motion-effective="off"] .cert-panel:hover,html[data-motion-effective="off"] .education-card:hover,html[data-motion-effective="off"] .toeic-card:hover,html[data-motion-effective="off"] .method-panel:hover,html[data-motion-effective="off"] .back-top:hover{ transform:none; } html[data-motion-effective="off"] .theme-anim,html[data-motion-effective="off"] .theme-anim *,html[data-motion-effective="off"] .theme-anim *::before,html[data-motion-effective="off"] .theme-anim *::after{ transition-duration:.01ms !important; } 
+@media(max-width:380px) { .contact-row>a { gap:6px; padding-inline:8px; } .contact-row>a .mini-icon:last-child {display:none;} .skill-filters button {padding-inline:10px;} }
+@media print { .ambient,.reading-progress,.back-top,.copy-toast,.copy-btn,.skill-filters,.interaction-hint {display:none !important;} .timeline p[hidden],.skill-card[hidden] {display:block !important;} }
+
+.no-js .reading-progress { display:none; }
