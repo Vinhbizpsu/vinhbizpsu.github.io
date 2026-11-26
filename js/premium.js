@@ -23,10 +23,6 @@ function update(){pending=false;const vh=w.innerHeight;
 }
 function schedule(){if(!pending){pending=true;w.requestAnimationFrame(update);}}
 w.addEventListener('scroll',schedule,{passive:true});w.addEventListener('resize',schedule,{passive:true});api.i18n.onChange(()=>{active=-1;schedule();});if('ResizeObserver' in w)new ResizeObserver(schedule).observe(timeline);schedule();
-// Model: select a variable; no coefficients or unconfirmed findings are manufactured.
-const nodes=all('[data-model]'), descriptions=all('[data-model-detail]');
-function choose(node){nodes.forEach(b=>b.setAttribute('aria-pressed',String(b===node)));descriptions.forEach(p=>p.hidden=p.dataset.modelDetail!==node.dataset.model);}
-nodes.forEach((b,i)=>{b.addEventListener('click',()=>choose(b));b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();const n=nodes[(i+(['ArrowRight','ArrowDown'].includes(e.key)?1:-1)+nodes.length)%nodes.length];choose(n);n.focus();});});
 // Quick view and PDF preview, including native browser fallback.
 const cv=$('#cv-dialog'), pdf=$('[data-pdf-frame]'), external=$('[data-pdf-external]');let current='vi';const openers=new Map();
 function preview(lang){current=lang;const path=w.NQV_CONTENT.cv[lang];pdf.src=path;external.href=path;all('[data-preview-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.previewLang===lang)));}
